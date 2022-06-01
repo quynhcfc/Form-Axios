@@ -15,14 +15,12 @@ class FoodForm extends Component {
 
   constructor(props) {
     super(props);
-    // this.nameRef = createRef();
-    // this.priceRef = createRef();
+    this.nameRef = createRef();
     this.formRef = createRef();
   }
 
   componentDidMount() {
-    // this.nameRef.current.focus();
-    // this.priceRef.current.focus();
+    this.nameRef.current.focus();
     this.formRef.current.reset();
   }
 
@@ -53,7 +51,6 @@ class FoodForm extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // console.log("nextProps", nextProps);
     if (nextProps.foodEdit) {
       this.setState({
         ...nextProps.foodEdit,
@@ -69,14 +66,14 @@ class FoodForm extends Component {
       })
 
       .then((res) => {
-        this.props.capNhatDanhSachMonAn(res.data);
+        this.props.capNhatMonAn(res.data);
         message.success("Cập nhật món ăn thành công");
         console.log(res);
       })
 
       .catch((err) => {
         message.error("Cập nhật món ăn thất bại");
-        console.log(err.res.data.err);
+        console.log(err);
       });
   };
 
@@ -89,7 +86,7 @@ class FoodForm extends Component {
               Tên món:
             </label>
             <input
-              // ref={this.nameRef}
+              ref={this.nameRef}
               type="text"
               value={this.state.name}
               className="form-control"
@@ -157,11 +154,8 @@ class FoodForm extends Component {
           <div className="col">
             <button
               type="button"
-              className="btn btn-warning mr-2"
+              className="btn btn-warning"
               onClick={() => {
-                // let valuePrice = this.priceRef.current.value;
-                // console.log({ valuePrice });
-                // console.log("state", this.state);
                 this.handleThemMonAn();
               }}
             >
@@ -169,13 +163,16 @@ class FoodForm extends Component {
             </button>
             <button
               type="button"
-              className="btn btn-success ml-2"
+              className="btn btn-success mx-2"
               onClick={() => {
                 this.handleCapNhatMonAn();
               }}
             >
               Cập nhật
             </button>
+            {/* <button type="button" className="btn btn-success">
+              Reset
+            </button> */}
           </div>
         </form>
       </div>
@@ -195,11 +192,10 @@ let mapDispatchToProps = (dispatch) => {
       dispatch(capNhatDanhSachMonAnAction(danhSach));
     },
 
-    capNhatMonAnMonAn: (id, monAn) => {
+    capNhatMonAn: (id) => {
       dispatch({
         type: CAP_NHAT_MON_AN,
-        id: id,
-        payload: monAn,
+        payload: id,
       });
     },
   };

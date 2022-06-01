@@ -1,4 +1,4 @@
-import { Button, message } from "antd";
+import { message } from "antd";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { capNhatDanhSachMonAnAction } from "../Redux/Action/food.action";
@@ -11,7 +11,7 @@ class FoodItem extends Component {
       .xoaMonAn(id)
       .then((res) => {
         return monAnService.layDanhSach();
-        console.log(res);
+        // console.log(res);
       })
 
       .then((res) => {
@@ -46,7 +46,7 @@ class FoodItem extends Component {
       <tr className="row mx-0">
         <td className="col-1">{id}</td>
         <td className="col-2">{name}</td>
-        <td className="col-2">{price}</td>
+        <td className="col-1">{price}</td>
         <td className="col-3">
           <img
             src={img}
@@ -55,7 +55,7 @@ class FoodItem extends Component {
           />
         </td>
         <td className="col-3">{description}</td>
-        <td className="col-1">
+        <td className="col-2">
           <button
             className="btn btn-success m-1"
             onClick={() => {

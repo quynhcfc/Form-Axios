@@ -31,11 +31,10 @@ export let monAnService = {
     });
   },
 
-  capNhatMonAn: (id, monAn) => {
+  capNhatMonAn: (id) => {
     return axios({
       url: `${BASE_URL}/${id}`,
       method: "PUT",
-      data: monAn,
     });
   },
 };

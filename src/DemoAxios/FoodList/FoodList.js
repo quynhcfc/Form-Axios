@@ -18,10 +18,10 @@ class FoodList extends Component {
               <tr className="row mx-0">
                 <th className="col-1">ID</th>
                 <th className="col-2">Tên món</th>
-                <th className="col-2">Giá món</th>
+                <th className="col-1">Giá món</th>
                 <th className="col-3">Hinh ảnh</th>
-                <th className="col-4">Mô tả</th>
-                <th className="col-4">Chức năng</th>
+                <th className="col-3">Mô tả</th>
+                <th className="col-2">Chức năng</th>
               </tr>
             </thead>
             <tbody>{this.renderFoodList()}</tbody>

@@ -23,7 +23,10 @@ export const monAnReducer = (state = initialState, action) => {
     }
 
     case CAP_NHAT_MON_AN: {
-      state.danhSachMonAn = action.payload;
+      let newFoodEdit = { ...state.foodEdit };
+
+      state.newFoodEdit = action.payload;
+
       return { ...state };
     }
 
